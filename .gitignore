@@ -1,0 +1,18 @@
+# Firebase
+taieye-firebase-adminsdk.json
+config.yaml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Jupyter
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
