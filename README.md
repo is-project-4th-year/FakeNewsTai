@@ -1,6 +1,6 @@
 # 🌐 TAIEYE Fake News Detection System
 
-![TAIEYE Logo](/Users/tevin_senator/Desktop/FakeNewsTai/taieye.jpg)
+![TAIEYE Logo](assets/images/taieye_logo.jpg)
 
 ## 📌 About TAIEYE
 
