@@ -1,6 +1,5 @@
 altair
 beautifulsoup4
-fasttext
 gdown
 joblib
 langdetect
@@ -18,10 +17,6 @@ spacy_streamlit
 streamlit
 textstat
 wordcloud
-
-# ──────────────────────────────
-# Firebase + Authentication
-# ──────────────────────────────
 firebase-admin>=6.0.0
 streamlit-authenticator>=0.3.0
 pyyaml>=6.0

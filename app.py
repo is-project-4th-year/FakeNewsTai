@@ -38,6 +38,7 @@ if not os.path.exists(CONFIG_FILE):
 with open(CONFIG_FILE) as f:
     config = yaml.load(f, Loader=SafeLoader)
 
+
 def create_user(email, password, name):
     try:
         user = auth.create_user(email=email, password=password)
@@ -52,6 +53,7 @@ def create_user(email, password, name):
         st.error(f"Signup failed: {e}")
         return False
 
+
 def send_magic_link(email):
     try:
         settings = auth.ActionCodeSettings(url="http://localhost:8501")
@@ -61,6 +63,7 @@ def send_magic_link(email):
     except Exception as e:
         st.error(f"Magic link failed: {e}")
 
+
 def send_reset_link(email):
     try:
         auth.generate_password_reset_link(email)
@@ -69,10 +72,11 @@ def send_reset_link(email):
         st.error(f"Reset failed: {e}")
 
 # ──────────────────────────────
-# 2. Page Config + CSS + PERFECT LOGO + TITLE
+# 2. Page Config + CSS + LOGOS
 # ──────────────────────────────
-st.set_page_config(page_title="TAIEYE", page_icon="Eagle", layout="wide")
+st.set_page_config(page_title="TAIEYE", page_icon="🦅", layout="wide")
 
+# Improved styling
 st.markdown("""
 <style>
     .main {background: #0e1117; color: white; padding: 2rem 0;}
@@ -87,22 +91,29 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── LOGO + TITLE (BEFORE LOGIN) ──
-st.markdown(f"""
-<div class="logo-container">
-    <img src="assets/images/taieye_logo.jpg" class="logo-img">
-    <h1 class="title">TAIEYE</h1>
-    <p class="subtitle"><i>Truth in Every Word</i></p>
-    <img src="assets/images/taieye_logo.jpg" class="eagle">
-</div>
-""", unsafe_allow_html=True)
+# Proper logo paths (relative to this file)
+logo_path = "./assets/images/taieye_logo.jpg"
+
+if os.path.exists(logo_path):
+    st.markdown(f"""
+    <div class="logo-container">
+        <img src="{logo_path}" class="logo-img">
+        <h1 class="title">TAIEYE</h1>
+        <p class="subtitle"><i>Truth in Every Word</i></p>
+        <img src="{logo_path}" class="eagle">
+    </div>
+    """, unsafe_allow_html=True)
+else:
+    st.warning("⚠️ Logo image not found in assets/images/. Please check your folder structure.")
 
 # ──────────────────────────────
 # 3. Authenticator
 # ──────────────────────────────
 authenticator = stauth.Authenticate(
-    config['credentials'], config['cookie']['name'],
-    config['cookie']['key'], config['cookie']['expiry_days']
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days']
 )
 
 # ──────────────────────────────
@@ -110,14 +121,20 @@ authenticator = stauth.Authenticate(
 # ──────────────────────────────
 tab1, tab2, tab3 = st.tabs(["Login", "Register", "Passwordless"])
 
+# ✅ FIXED LOGIN ERROR: Use only valid locations and ensure consistent return unpacking
 with tab1:
-    name, auth_status, username = authenticator.login('Login', 'main')
+    try:
+        name, auth_status, username = authenticator.login('Login', 'main')
+    except ValueError:
+        # fallback in case of version mismatch
+        name, auth_status, username = authenticator.login('Login', location='sidebar')
+
     if st.button("Sign in with Google"):
         st.info("Google OAuth: Use Email/Password for now.")
-    if st.button("Send Magic Link"):
-        email = st.text_input("Email for magic link", key="magic_email")
-        if st.button("Send", key="send_magic"):
-            send_magic_link(email)
+
+    email = st.text_input("Email for magic link", key="magic_email")
+    if st.button("Send Magic Link", key="send_magic"):
+        send_magic_link(email)
 
 with tab2:
     with st.form("register"):
@@ -146,10 +163,9 @@ with st.expander("Forgot Password?"):
 # ──────────────────────────────
 # 5. AUTHENTICATED APP (Your Original Code)
 # ──────────────────────────────
-if auth_status:
+if 'auth_status' in locals() and auth_status:
     st.sidebar.success(f"Welcome, {name}!")
     authenticator.logout('Logout', 'sidebar')
-
     # ── YOUR ORIGINAL CODE STARTS HERE (unchanged) ──
     st.title("Fake News Detection App")
 
@@ -252,7 +268,8 @@ if auth_status:
             num_perturbed_samples = st.slider("Select the number of perturbed samples for explanation", 25, 500, 50, 25,
                 help="Increasing the number of samples will make the outputted explanations more accurate but may take longer to process!")
             st.write("The more perturbed samples you choose, the more accurate the explanation will be, but it will take longer to output.")
-            st.warning(warning_message_for_first_two_tabs, icon='Warning')
+            st.warning(warning_message_for_first_two_tabs, icon='⚠️')
+
             
             if st.button("Classify", key="classify_button_url"): 
                 if url.strip():  
@@ -287,7 +304,7 @@ if auth_status:
                         except Exception as e:
                             st.error("Could not extract and analyze the news text. Please try to copy and paste in the text directly in the second tab.")
                 else:
-                    st.warning("Warning: Please enter some valid news text for classification!")
+                    st.warning("⚠️ Please enter some valid news text for classification!")
 
         with tabs[1]:
             st.header("Paste News Text In Here Directly")
@@ -295,7 +312,7 @@ if auth_status:
             num_perturbed_samples = st.slider("Select the number of perturbed samples to use for the explanation", 25, 500, 50, 25,
                 help="Warning: Increasing the number of samples will make the outputted explanations more accurate but may take longer to process!")
             st.write("The more perturbed samples you choose, the more accurate the explanation will be, but it will take longer to compute.")
-            st.warning(warning_message_for_first_two_tabs, icon='Warning')
+            st.warning(warning_message_for_first_two_tabs, icon="⚠️")
             
             if st.button("Classify", key="classify_button_text"):
                 if news_text.strip():  
@@ -308,7 +325,7 @@ if auth_status:
                     except Exception as e:
                         st.error(f"Sorry, but there was an error while analyzing the text: {e}")
                 else:
-                    st.warning("Warning: Please enter some valid news text for classification!")
+                    st.warning("⚠️ Please enter some valid news text for classification!")
 
         with tabs[2]:
             st.header("Key Patterns in the Training Dataset: Real (Blue) vs Fake (Red) News")
@@ -471,7 +488,7 @@ if auth_status:
                 as fake news tends to be easier to digest and less challenging.
                 """)
 
-            st.warning(warning_message, icon='Warning')
+            st.warning(warning_message, icon='⚠️')
                 
             st.subheader("Disclaimer: Limitations of the Model")
             st.markdown("""

@@ -1,4 +1,4 @@
-#!/Users/tevin_senator/Desktop/FakeNewsTai/.venv/bin/python3
+#!/Users/tevin_senator/Desktop/FakeNewsTai/.venv/bin/python3.9
 import sys
 from imageio.__main__ import remove_bin_main
 if __name__ == '__main__':

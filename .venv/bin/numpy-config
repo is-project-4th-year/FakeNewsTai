@@ -1,4 +1,4 @@
-#!/Users/tevin_senator/Desktop/FakeNewsTai/.venv/bin/python3
+#!/Users/tevin_senator/Desktop/FakeNewsTai/.venv/bin/python3.9
 import sys
 from numpy._configtool import main
 if __name__ == '__main__':
