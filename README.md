@@ -1,6 +1,3 @@
-Below is a **fully rewritten, professional, emoji-free README.md**, retaining your structure but aligned with the new run instructions and focused on your real TaiEye system (stacked ensemble, LIME, Streamlit, Firebase).
-
-Everything is clean, formal, and production-ready.
 
 ---
 
