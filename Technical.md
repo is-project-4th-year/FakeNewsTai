@@ -175,7 +175,7 @@ Accidental commit of Firebase service key.
 
 ---
 
-## **5. Application Screenshots **
+## **5. Application Screenshots**
 
 
 ### 1. **Login / Register Page**
