@@ -1,4 +1,4 @@
-#!/Users/tevin_senator/Desktop/FakeNewsTai/.venv/bin/python3.9
+#!/Users/tevin_senator/Desktop/FakeNewsTaii/FakeNewsTai/.venv/bin/python3
 import sys
 from numpy.f2py.f2py2e import main
 if __name__ == '__main__':

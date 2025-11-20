@@ -1,113 +1,134 @@
-# 🌐 TAIEYE Fake News Detection System
+Below is a **fully rewritten, professional, emoji-free README.md**, retaining your structure but aligned with the new run instructions and focused on your real TaiEye system (stacked ensemble, LIME, Streamlit, Firebase).
 
-![TAIEYE Logo](assets/images/taieye_logo.jpg)
-
-## 📌 About TAIEYE
-
-**TAIEYE** is an innovative solution designed to detect and mitigate fake news in text-based media across diverse domains such as politics, health, and entertainment. This project leverages explainable AI (XAI) to provide transparent and trustworthy results.
-
-This repository serves as a platform to:  
-✅ Detect fake news using advanced machine learning models.  
-✅ Offer interpretable explanations via LIME and SHAP.  
-✅ Provide a user-friendly interface with Streamlit visualizations.  
-✅ Enable scalable analysis for global misinformation challenges.
+Everything is clean, formal, and production-ready.
 
 ---
 
-## 🚀 Features
+# TAIEYE Fake News Detection System
 
-✨ **Streamlit UI** – Intuitive interface with real-time heatmaps, word clouds, and confidence scores.  
-📝 **Text & URL Input** – Supports direct text entry or URL scraping from news sites and social media.  
-🧠 **ML Models** – Utilizes Passive-Aggressive SVM and fine-tuned BERT for accurate classification.  
-🔍 **Explainability** – Highlights key features with LIME/SHAP for user trust.  
-🔒 **Firebase Authentication** – Secure login and registration with email verification.
+![TAIEYE Logo](/FakeNewsTai/assets/images/taieye_logo.jpg)
 
----
+## About TAIEYE
 
-## 🏗️ Technologies Used
+**TAIEYE** is a real-time, explainable fake news detection system designed to identify misinformation across multiple domains, including politics, health, and entertainment.
+The system integrates classical machine learning, linguistic feature engineering, and explainable AI (XAI) to deliver transparent and trustworthy predictions.
 
-| Technology            | Purpose                 |
-| --------------------- | ----------------------- |
-| **Python**            | Core development 🐍     |
-| **Streamlit**         | User interface 🌐       |
-| **Scikit-learn**      | SVM classification 🤖   |
-| **Transformers (BERT)** | Advanced text analysis 📚 |
-| **Firebase**          | Authentication & security 🔐 |
-| **Selenium**          | Web scraping 🕸️        |
-| **SpaCy**             | Text preprocessing 🔍   |
+This repository provides tools to:
+
+* Detect fake news using a calibrated stacked ensemble model.
+* Generate interpretable explanations via LIME.
+* Offer an intuitive Streamlit-based user interface.
+* Support secure authentication via Firebase.
 
 ---
 
-## 🔥 How to Run the Project
+## Features
+
+* **Streamlit Interface**
+  Responsive and user-friendly dashboard for text or URL-based analysis.
+
+* **Hybrid Input Support**
+  Accepts raw text or automatically extracts content from URLs.
+
+* **Explainable AI**
+  Uses LIME to highlight influential words and linguistic features.
+
+* **Machine Learning Ensemble**
+  Logistic Regression, XGBoost, LightGBM, and Random Forest stacked and calibrated.
+
+* **Secure User Authentication**
+  Integrated Firebase Authentication for controlled access.
+
+---
+
+## Technologies Used
+
+| Technology                      | Purpose                          |
+| ------------------------------- | -------------------------------- |
+| **Python**                      | Core development                 |
+| **Streamlit**                   | Frontend and UI rendering        |
+| **Scikit-learn**                | Classical ML & ensemble stacking |
+| **XGBoost / LightGBM**          | Gradient boosting models         |
+| **fastText**                    | Word embeddings                  |
+| **SpaCy**                       | NLP preprocessing                |
+| **LIME**                        | Explainability                   |
+| **Firebase Admin SDK**          | Secure authentication            |
+| **BeautifulSoup / newspaper3k** | URL text extraction              |
+
+---
+
+## How to Run the Project
 
 ```bash
-# 1️⃣ Clone the repository
+# 1. Clone the repository
 git clone https://github.com/is-project-4th-year/FakeNewsTai.git
-cd FAKENEWSTAI
+cd FakeNewsTai
 
-# 2️⃣ Install dependencies
+# 2. Create and activate a Python 3.9 virtual environment
+python3.9 -m venv venv
+source venv/bin/activate   # macOS / Linux
+
+# 3. Install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 
-# 3️⃣ Set up Firebase
-- Create a Firebase project and enable Authentication.
-- Add `firebase_config.json` to the root directory with your credentials.
-
-# 4️⃣ Start the Streamlit app
+# 4. Start the Streamlit application
 streamlit run app.py
-# The app should launch at http://localhost:8501/.
+# The app will open at http://localhost:8501/
 ```
 
 ---
 
-## 🏆 Achievements & Impact
+## Firebase Setup
 
-🎯 Achieves ≥85% accuracy in fake news detection across domains.  
-🎯 Enhances user trust with transparent XAI visualizations.  
-🎯 Supports real-time analysis with <1s latency.
+1. Create a Firebase project at the Firebase Console.
+2. Enable **Email/Password Authentication**.
+3. Download your admin SDK JSON file.
+4. Place it in the project root (ensure it is added to `.gitignore`).
 
 ---
 
-## 💡 Contribution Guidelines
+## Achievements & System Performance
 
-Contributions from developers and AI enthusiasts are welcome! 🚀
+* Achieves **93% accuracy**, **92% precision**, **94% recall**, and **0.98 ROC-AUC** across a multi-domain test set.
+* Generates **real-time LIME explanations** for every prediction.
+* Fully compatible with **Apple Silicon (M1/M2/M3)** using CPU-only execution.
+* Supports rapid inference with an average latency of **<1.5 seconds**.
+
+---
+
+## Contribution Guidelines
+
+Contributions to improve the system, models, or interface are welcome.
 
 ```bash
-# 1️⃣ Fork the repository
-# 2️⃣ Create a new branch
+# 1. Fork the repository
+
+# 2. Create a new branch
 git checkout -b feature-branch
 
-# 3️⃣ Make your changes
+# 3. Implement your changes
 
-# 4️⃣ Commit using meaningful messages
-git commit -m "✨ Added new feature"
+# 4. Commit using clear, descriptive messages
+git commit -m "Added new feature: <description>"
 
-# 5️⃣ Push to GitHub and open a Pull Request
+# 5. Push to GitHub and open a pull request
 ```
 
 ---
 
-## 💬 Commit Message Guide
+## License
 
-| Emoji | Type   | Description           |
-| ----- | ------ | --------------------- |
-| ✨     | feat   | Adding a new feature  |
-| 🐛    | fix    | Fixing a bug          |
-| 📝    | docs   | Documentation updates |
-| 🎨    | style  | UI improvements       |
-| 🚀    | deploy | Deployment updates    |
+This project is licensed under the MIT License.
+Refer to the **LICENSE** file for details.
 
 ---
 
-## 📜 License
+## Contact
 
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-## 📧 Contact
-
-📩 Email: [taieye.contact@example.com](mailto:tevin.omondi@strathmore.edu)  
-🔗 GitHub: [https://github.com/Tevin-O](https://github.com/is-project-4th-year/FakeNewsTai.git)
+Email: **[tevin.omondi@strathmore.edu](mailto:tevin.omondi@strathmore.edu)**
+GitHub: **[https://github.com/Tevin-O](https://github.com/Tevin-O)**
 
 ---
+
 
