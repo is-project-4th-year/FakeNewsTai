@@ -182,19 +182,19 @@ Accidental commit of Firebase service key.
 
 Firebase-powered authentication with animated TaiEye eagle.
 
-![Login Page](/FakeNewsTai/assets/images/login.png)
+![Login Page](assets/images/login.png)
 
 ### 2. **Fake News Detection Interface**
 
 URL / text input form, prediction output, and confidence scoring.
 
-![Prediction UI](/FakeNewsTai/assets/images/predictionUi.png)
+![Prediction UI](assets/images/predictionUi.png)
 
 ### 3. **LIME Explainability Tab**
 
 Lime Explainer and Graphs 
 
-![LIME Explainability](/FakeNewsTai/assets/images/lime_explainability.png)
+![LIME Explainability](assets/images/lime_explainability.png)
 
 
 ---

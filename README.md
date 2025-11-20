@@ -3,7 +3,7 @@
 
 # TAIEYE Fake News Detection System
 
-![TAIEYE Logo](/FakeNewsTai/assets/images/taieye_logo.jpg)
+![TAIEYE Logo](assets/images/taieye_logo.jpg)
 
 ## About TAIEYE
 
