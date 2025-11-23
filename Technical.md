@@ -6,9 +6,13 @@
 **Technical Documentation**
 
 **Final Year Project Completion Report**
+
 **Date:** November 2025
+
 **Author:** Tevin Omondi
+
 **Model:** Calibrated Stacked Ensemble (Logistic Regression + XGBoost + LightGBM + Random Forest) with LIME Explainability
+
 **Live Demo:** [https://taieye-fakenews.streamlit.app](https://taieye-fakenews.streamlit.app)
 
 ---
