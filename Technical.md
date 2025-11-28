@@ -63,16 +63,12 @@ To unify the datasets, a consistent cleaning workflow was implemented:
 
 **Base Learners**
 
-* Logistic Regression (L2)
-* XGBoost (max_depth=10, n_estimators=300)
-* LightGBM (same configuration)
-* Random Forest (n_estimators=300)
+* Pretrained BERT Model
+* Passive Aggresive Classifier with TF-IDF Vectorization
+
 
 **Calibration:**
-Platt scaling applied independently to all base models.
-
-**Meta-Learner:**
-Logistic Regression with L2 regularization (Adam optimizer)
+Stack Ensembling Technique 
 
 **Explainability:**
 
